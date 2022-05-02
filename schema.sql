@@ -1,6 +1,6 @@
 -- Creating tables for PH-EmployeeDB
 CREATE TABLE departments (
-     dept_no VARCHAR(4) NOT NULL,
+     dept_no VARCHAR(8) NOT NULL,
      dept_name VARCHAR(40) NOT NULL,
      PRIMARY KEY (dept_no),
      UNIQUE (dept_name)
@@ -17,43 +17,45 @@ CREATE TABLE employees(
      PRIMARY KEY (emp_no)
 );
 
-CREATE TABLE dept_manager (
-dept_no VARCHAR(4) NOT NULL,
-    emp_no INT NOT NULL,
-    from_date DATE NOT NULL,
-    to_date DATE NOT NULL,
-FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
-FOREIGN KEY (dept_no) REFERENCES departments (dept_no),
-    PRIMARY KEY (emp_no, dept_no)
+
+-- creating remaining tables 
+create table dept_emp(
+	emp_no int not null,
+	dept_no varchar(8),
+	from_date date not null,
+	to_date date not null,
+	
+foreign key (emp_no) references employees (emp_no),
+foreign key (dept_no) references departments (dept_no),
+primary key(emp_no,dept_no)
+	
+);
+
+create table dept_manager(
+	dept_no varchar not null,
+	emp_no int not null,
+	from_date date not null, 
+	to_date date not null,
+
+foreign key (dept_no) references departments (dept_no),	
+foreign key (emp_no) references employees (emp_no),
+primary key(dept_no,emp_no)
+	
 );
 
 
-CREATE TABLE salaries (
-  emp_no INT NOT NULL,
-  salary INT NOT NULL,
-  from_date DATE NOT NULL,
-  to_date DATE NOT NULL,
-  FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
-  PRIMARY KEY (emp_no)
-);
+create table salaries(
+	salary int not null,
+	emp_no int not null,
+	from_date date not null,
+	to_date date not null,
+foreign key (emp_no) references employees (emp_no),
+primary key (emp_no));
 
-CREATE TABLE titles(
-	emp_no INT NOT NULL,
-	title VARCHAR NOT NULL,
-	from_date DATE NOT NULL,
-	to_date DATE NOT NULL,
-	FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
-	PRIMARY KEY (emp_no));
-
-CREATE TABLE managers(
-	dept_no VARCHAR (4) NOT NULL,
-	emp_no INT NOT NULL,
-	from_date DATE NOT NULL,
-	to_date DATE NOT NULL,
-	FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
-	FOREIGN KEY (dept_no) REFERENCES departments (dept_no),
-    PRIMARY KEY (emp_no, dept_no))
-	
-	
-	
-	SELECT * FROM departments;
+-- drop table titles cascade
+create table titles(
+	title varchar not null,
+	emp_no int not null,	
+	from_date date not null,
+	to_date date not null,
+primary key (emp_no, title, from_date));
