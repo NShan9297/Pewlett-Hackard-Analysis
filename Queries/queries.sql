@@ -1,43 +1,84 @@
-SELECT first_name, last_name
-FROM employees
-WHERE birth_date BETWEEN '1952-01-01' AND '1955-12-31';
+****MODULE 7 CHALLENGE QUERIES***
+for retirement_titles output 
 
-SELECT first_name, last_name
-FROM employees
-WHERE birth_date BETWEEN '1952-01-01' AND '1952-12-31';
+--Joining the Employees and Titles Tables
+SELECT e.emp_no,
+ e.first_name,
+ e.last_name
+t.title,
+ t.from_date,
+ t.to_date
+--INTO retirement_titles.csv
+FROM employees AS e
+INNER JOIN titles AS t
+ON (e.emp_no=t.emp_no)
+WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
 
-SELECT first_name, last_name
-FROM employees
-WHERE birth_date BETWEEN '1953-01-01' AND '1953-12-31';
+--for unique_titles Table
 
-
-SELECT first_name, last_name
-FROM employees
-WHERE birth_date BETWEEN '1954-01-01' AND '1954-12-31';
-
-SELECT first_name, last_name
-FROM employees
-WHERE birth_date BETWEEN '1955-01-01' AND '1955-12-31';
-
-
--- Retirement eligibility
-SELECT first_name, last_name
-FROM employees
-WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
-AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
-
-
--- Number of employees retiring first names (i.e only one column as we need a count-postgres is counting the number of rows that satify this condition)
-SELECT COUNT(first_name)
-FROM employees
-WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
-AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
+SELECT 
+DISTINCT ON (ri.emp_no)
+ri.emp_no,
+ri.first_name,
+ri.last_name,
+ri.title
+INTO unique_titles
+FROM retirement_titles AS ri
+WHERE (ri.to_date BETWEEN '9999-01-01' AND '9999-01-01') 
+ ORDER BY
+ ri.emp_no ASC,
+ ri.to_date DESC;
 
 
-SELECT first_name, last_name
-INTO retirement_info 
-FROM employees
-WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
-AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
+--Getting the employee count by title
+ SELECT 
+ut.title,
+COUNT (ut.title)
+INTO retiring_titles
+FROM unique_titles AS ut
+GROUP BY (ut.title)
+ORDER BY
+ut.count DESC;
 
-select * from retirement_info 
+
+--Creating the mentorship eligibility tabkle 
+SELECT
+DISTINCT ON (e.emp_no) e.emp_no,
+e.first_name,
+e.last_name,
+e.birth_date,
+de.from_date,
+de.to_date,
+t.title
+INTO mentorship_eligibility 
+FROM employees AS e
+INNER JOIN dept_emp AS de
+ON(e.emp_no=de.emp_no)
+INNER JOIN titles as t
+ON (t.emp_no=e.emp_no)
+WHERE (de.to_date BETWEEN '9999-01-01' AND '9999-01-01' )
+AND (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+ORDER BY e.emp_no;
+
+
+--Total title count Query to determine the number of employees
+
+SELECT 
+title,
+COUNT (titles)
+from titles
+Group by (titles.title)
+order by 
+titles.count DESC;
+
+-- Total title count of eligible mentors query 
+SELECT 
+title, 
+count(title)
+from mentorship_eligibility 
+group by (mentorship_eligibility.title)
+order by 
+mentorship_eligibility.count DESC;
+
+
+-- Total count of 
