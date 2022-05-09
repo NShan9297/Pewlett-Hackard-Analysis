@@ -32,10 +32,13 @@ There will be 1,549 eligible mentors and 72,528 roles will need to be filled
 
 by department-we can also see that there will be a deficit:
 
+the first table is Retiring Employees and the second is the count for the eligible mentors
+
+![Retiring Employees Snip](https://github.com/NShan9297/Pewlett-Hackard-Analysis/blob/main/Retiring%20Employees%20Snip.jpg)
+
 ![Eligible Mentors Snip](https://github.com/NShan9297/Pewlett-Hackard-Analysis/blob/main/Eligible%20Mentors%20Snip.jpg) 
 
 
-![Retiring Employees Snip](https://github.com/NShan9297/Pewlett-Hackard-Analysis/blob/main/Retiring%20Employees%20Snip.jpg)
 
 If the Mentors are able to take on groups, there would be 
 about 61 new employees for every Senior Staff Mentor
