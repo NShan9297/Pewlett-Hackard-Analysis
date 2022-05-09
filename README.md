@@ -40,12 +40,20 @@ the first table is Retiring Employees and the second is the count for the eligib
 
 
 
-If the Mentors are able to take on groups, there would be 
+If the Mentors are able to take on groups, there would be: 
 about 61 new employees for every Senior Staff Mentor
+
 about 23 new employees for every Engineer mentor
+
 about 24 new employees for every Staff mentor
+
 about 87 new employees for every Senior Engineer mentor 
+
 about 46 new employees for every Technique Leader mentor
+
 about 18 new employees for every Assistant Engineer mentor
 
-Some roles may be able to mentor larger groups while some may not.
+
+Some roles may be able to mentor larger groups while some may not. If Mentors can also be pulled from Current Employees, then one-to-one ratio would be possible-even with the amount of retirees:
+
+!(Current Employees)[https://github.com/NShan9297/Pewlett-Hackard-Analysis/blob/main/Current%20Employees.jpg]
