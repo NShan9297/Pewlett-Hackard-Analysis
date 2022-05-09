@@ -34,9 +34,10 @@ by department-we can also see that there will be a deficit:
 
 the first table is Retiring Employees and the second is the count for the eligible mentors
 
-![Retiring Employees Snip](https://github.com/NShan9297/Pewlett-Hackard-Analysis/blob/main/Retiring%20Employees%20Snip.jpg)
+![Retiring Employees Snip](https://github.com/NShan9297/Pewlett-Hackard-Analysis/blob/main/ScreenShots/Retiring%20Employees%20Snip.jpg)
 
-![Eligible Mentors Snip](https://github.com/NShan9297/Pewlett-Hackard-Analysis/blob/main/Eligible%20Mentors%20Snip.jpg) 
+
+![Eligible Mentors Snip](https://github.com/NShan9297/Pewlett-Hackard-Analysis/blob/main/ScreenShots/Retiring%20Employees%20Snip.jpg) 
 
 
 
@@ -56,4 +57,4 @@ about 18 new employees for every Assistant Engineer mentor
 
 Some roles may be able to mentor larger groups while some may not. If Mentors can also be pulled from Current Employees, then one-to-one ratio would be possible-even with the amount of retirees:
 
-!(Current Employees)[https://github.com/NShan9297/Pewlett-Hackard-Analysis/blob/main/Current%20Employees.jpg]
+![Current Employees](https://github.com/NShan9297/Pewlett-Hackard-Analysis/blob/main/ScreenShots/Current%20Employees.jpg)
